@@ -1,1 +1,64 @@
+from flask import Flask, render_template, url_for
 
+app = Flask("__name__")
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/chickens")
+def chickens():
+    return render_template("chickens.html")
+
+@app.route("/pandas")
+def pandas():
+    return render_template("pandas.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Animal Farm</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h1>Welcome to the Animal World!</h1>
+	<ul>
+		<li>Learn about chickens --> <a href="/chickens">Chickens!</a>
+		<li>Learn about pandas --> <a href="/pandas">Pandas!</a>
+	</ul>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chickens</title>
+</head>
+<body>
+	<img src="/static/chicken.jpg">
+	<p>
+	Chickens are domesticated birds that belong to the species Gallus gallus domesticus. They are widely kept for their eggs and meat, making them one of the most common and widespread domestic animals. Chickens are social animals that live together in flocks and establish a pecking order, a social hierarchy that dictates access to resources and mating opportunities. They have a diverse range of vocalizations to communicate with one another and are known for their distinctive clucking sounds. Chickens play a significant role in agriculture and cuisine worldwide, with various breeds developed for specific purposes, such as egg-laying or meat production.
+	</p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pandas</title>
+</head>
+<body>
+	<img src="panda.jpg">
+	<p>Pandas, also known as giant pandas (Ailuropoda melanoleuca), are bear-like mammals native to the mountainous regions of central China. Recognized for their distinctive black-and-white fur, pandas primarily inhabit bamboo forests, where they feed almost exclusively on bamboo shoots and leaves. Despite their carnivorous ancestry, pandas have evolved to become specialized herbivores. They are solitary animals, with each adult maintaining a defined territory. Pandas are considered a national treasure in China and are an important symbol for wildlife conservation worldwide, as they are classified as vulnerable due to habitat loss and low reproductive rates. Conservation efforts, including captive breeding programs and habitat preservation, have been implemented to protect this beloved species.</p>
+</body>
+</html>
+
+html {
+	background-color: gray;
+}
